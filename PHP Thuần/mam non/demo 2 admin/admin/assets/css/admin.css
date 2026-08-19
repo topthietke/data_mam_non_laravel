@@ -1,0 +1,176 @@
+/* ==========================================================================
+   Khu vực Quản trị — Mầm Non Sao Nhỏ
+   Dùng chung bảng màu với trang public nhưng bố cục kiểu dashboard.
+   ========================================================================== */
+
+:root {
+  --a-bg:        #F5F3FB;
+  --a-sidebar:   #2D2A4A;
+  --a-sidebar-active: #3A3663;
+  --a-coral:     #FF7A59;
+  --a-coral-dark:#EF5F3C;
+  --a-sun:       #FFC857;
+  --a-leaf:      #4CAF7D;
+  --a-leaf-dark: #3B9367;
+  --a-sky:       #6FB7DE;
+  --a-plum:      #2D2A4A;
+  --a-plum-soft: #6C6893;
+  --a-line:      #E7E4F2;
+  --a-radius:    16px;
+  --a-shadow:    0 10px 26px -14px rgba(45,42,74,.18);
+  --font-display: 'Baloo 2', system-ui, sans-serif;
+  --font-body: 'Be Vietnam Pro', system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; }
+body { font-family: var(--font-body); background: var(--a-bg); color: var(--a-plum); margin: 0; }
+h1,h2,h3,.admin-brand strong { font-family: var(--font-display); }
+a { text-decoration: none; }
+code { background: #EFEBFB; padding: .1rem .4rem; border-radius: 6px; }
+
+/* ===== Shell layout ===== */
+.admin-shell { display: flex; min-height: 100vh; }
+
+.admin-sidebar {
+  width: 260px; flex-shrink: 0; background: var(--a-sidebar); color: #DCD9F0;
+  display: flex; flex-direction: column; padding: 1.4rem 1rem; position: sticky; top: 0; height: 100vh;
+}
+.admin-brand { display: flex; align-items: center; gap: .7rem; color: #fff; margin-bottom: 1.8rem; padding: 0 .4rem; }
+.admin-brand-mark {
+  width: 40px; height: 40px; border-radius: 12px; flex-shrink: 0;
+  background: linear-gradient(145deg, var(--a-sun), var(--a-coral));
+  display: flex; align-items: center; justify-content: center; color: #fff; font-size: 1.15rem;
+}
+.admin-brand strong { display: block; font-size: 1.05rem; }
+.admin-brand small { font-size: .72rem; color: #B4AEDD; }
+
+.admin-nav { display: flex; flex-direction: column; gap: .2rem; flex: 1; overflow-y: auto; }
+.admin-nav-link {
+  display: flex; align-items: center; gap: .75rem; padding: .65rem .85rem; border-radius: 12px;
+  color: #DCD9F0; font-weight: 600; font-size: .92rem; transition: background .18s, color .18s;
+}
+.admin-nav-link i { font-size: 1.05rem; width: 20px; text-align: center; }
+.admin-nav-link:hover { background: rgba(255,255,255,.06); color: #fff; }
+.admin-nav-link.active { background: var(--a-coral); color: #fff; }
+.admin-sidebar-footer { display: flex; flex-direction: column; gap: .2rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,.1); }
+
+.admin-main { flex: 1; min-width: 0; }
+.admin-topbar {
+  display: flex; align-items: center; gap: 1rem; padding: 1.1rem 1.8rem; background: #fff;
+  border-bottom: 1px solid var(--a-line); position: sticky; top: 0; z-index: 10;
+}
+.admin-menu-toggle { border: none; background: none; font-size: 1.4rem; color: var(--a-plum); }
+.admin-page-title { font-size: 1.3rem; margin: 0; flex: 1; }
+.admin-user-chip { display: flex; align-items: center; gap: .5rem; font-weight: 600; font-size: .9rem; color: var(--a-plum-soft); }
+.admin-user-chip i { font-size: 1.4rem; color: var(--a-coral); }
+
+.admin-content { padding: 1.8rem; max-width: 1200px; }
+
+/* ===== Alerts / thông báo ===== */
+.alert-admin {
+  display: flex; align-items: center; gap: .6rem; padding: .85rem 1.1rem; border-radius: 12px;
+  font-weight: 600; font-size: .92rem; margin-bottom: 1.3rem;
+}
+.alert-admin-thanh-cong { background: #E4F3EA; color: #2A6B47; }
+.alert-admin-loi { background: #FDE7E2; color: #A3341B; }
+
+/* ===== Thẻ thống kê dashboard ===== */
+.stat-card {
+  display: block; background: #fff; border-radius: var(--a-radius); padding: 1.3rem;
+  box-shadow: var(--a-shadow); border: 1px solid var(--a-line); color: var(--a-plum);
+  transition: transform .18s ease;
+}
+.stat-card:hover { transform: translateY(-3px); }
+.stat-card-icon { width: 42px; height: 42px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: #fff; margin-bottom: .8rem; }
+.stat-card-coral .stat-card-icon { background: var(--a-coral); }
+.stat-card-sun .stat-card-icon { background: var(--a-sun); }
+.stat-card-leaf .stat-card-icon { background: var(--a-leaf); }
+.stat-card-sky .stat-card-icon { background: var(--a-sky); }
+.stat-card-so { font-family: var(--font-display); font-size: 1.7rem; font-weight: 800; }
+.stat-card-nhan { font-size: .84rem; color: var(--a-plum-soft); }
+
+/* ===== Thẻ chung ===== */
+.admin-card { background: #fff; border-radius: var(--a-radius); padding: 1.5rem; box-shadow: var(--a-shadow); border: 1px solid var(--a-line); margin-bottom: 1.5rem; }
+.admin-card-header { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .8rem; margin-bottom: .3rem; }
+.admin-card-header h2 { font-size: 1.05rem; margin: 0; }
+.admin-hint { font-size: .85rem; color: var(--a-plum-soft); margin: .3rem 0 1.2rem; }
+.admin-empty { color: var(--a-plum-soft); font-size: .92rem; padding: 1.5rem 0; text-align: center; }
+.admin-link-more { font-size: .85rem; font-weight: 700; color: var(--a-leaf-dark); }
+
+/* ===== Bảng ===== */
+.admin-table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+.admin-table th { text-align: left; color: var(--a-plum-soft); font-weight: 700; font-size: .78rem; text-transform: uppercase; letter-spacing: .03em; padding: .6rem .7rem; border-bottom: 2px solid var(--a-line); }
+.admin-table td { padding: .7rem; border-bottom: 1px solid var(--a-line); vertical-align: middle; }
+.admin-table tbody tr:hover { background: #FAFAFE; }
+
+.badge-trangthai { padding: .25rem .65rem; border-radius: 999px; font-size: .76rem; font-weight: 700; }
+.badge-moi { background: #FFE9D2; color: #B15C1B; }
+.badge-da_lien_he { background: #DCE9FB; color: #2B5FA3; }
+.badge-hoan_tat { background: #E0F4E6; color: #2A7A4C; }
+
+/* ===== Thẻ nội dung dạng lưới (điểm mạnh, khối lớp, hoạt động) ===== */
+.content-card { background: #FBFAFF; border: 1px solid var(--a-line); border-radius: 14px; padding: 1.1rem; height: 100%; position: relative; }
+.content-card h3 { font-size: 1rem; margin: .2rem 0 .1rem; }
+.content-card p { font-size: .86rem; color: var(--a-plum-soft); margin: .3rem 0 0; }
+.content-card-tag { font-size: .76rem; font-weight: 700; color: var(--a-coral-dark); }
+.content-card-icon { width: 40px; height: 40px; border-radius: 10px; background: #E4F3EA; color: var(--a-leaf-dark); display: flex; align-items: center; justify-content: center; margin-bottom: .5rem; }
+.content-card-order { display: flex; align-items: center; gap: .4rem; font-size: .76rem; font-weight: 700; color: var(--a-plum-soft); margin-bottom: .6rem; }
+.content-card-actions { display: flex; gap: .4rem; margin-top: .8rem; }
+.order-btn { border: 1px solid var(--a-line); background: #fff; border-radius: 8px; width: 26px; height: 26px; display: inline-flex; align-items: center; justify-content: center; font-size: .7rem; color: var(--a-plum-soft); }
+.order-btn:disabled { opacity: .3; }
+
+.hoatdong-preview {
+  --tile-bg: #eee; background: var(--tile-bg); border-radius: 14px; padding: 1.2rem;
+  display: flex; flex-direction: column; align-items: center; text-align: center; gap: .5rem; position: relative; min-height: 150px; justify-content: center;
+}
+.hoatdong-preview i { font-size: 1.8rem; }
+.hoatdong-preview span { font-weight: 700; font-size: .92rem; }
+.hoatdong-preview .content-card-actions { position: absolute; top: .6rem; right: .6rem; margin: 0; }
+
+.btn-icon {
+  border: 1px solid var(--a-line); background: #fff; border-radius: 8px; width: 32px; height: 32px;
+  display: inline-flex; align-items: center; justify-content: center; color: var(--a-plum-soft); font-size: .85rem;
+}
+.btn-icon:hover { background: var(--a-bg); }
+.btn-icon-danger:hover { background: #FDE7E2; color: #A3341B; border-color: #F6C6BB; }
+
+/* ===== Quick links ===== */
+.quick-links { display: flex; flex-direction: column; gap: .4rem; }
+.quick-link { display: flex; align-items: center; gap: .7rem; padding: .7rem .8rem; border-radius: 10px; color: var(--a-plum); font-weight: 600; font-size: .9rem; border: 1px solid var(--a-line); }
+.quick-link:hover { background: var(--a-bg); }
+.quick-link i:first-child { color: var(--a-leaf-dark); }
+
+/* ===== Buttons ===== */
+.btn-cta {
+  background: var(--a-coral); color: #fff !important; border: none; border-radius: 999px;
+  padding: .55rem 1.3rem; font-weight: 700; transition: background .18s ease;
+}
+.btn-cta:hover { background: var(--a-coral-dark); color: #fff; }
+.btn-outline-cta { border: 2px solid var(--a-plum); color: var(--a-plum) !important; border-radius: 999px; padding: .5rem 1.2rem; font-weight: 700; background: transparent; }
+.btn-outline-cta:hover { background: var(--a-plum); color: #fff !important; }
+.text-coral { color: var(--a-coral-dark) !important; }
+.text-leaf { color: var(--a-leaf-dark) !important; }
+
+/* ===== Form ===== */
+.form-label { font-weight: 600; font-size: .87rem; }
+.form-control, .form-select { border-radius: 10px; border: 1.5px solid var(--a-line); padding: .55rem .8rem; }
+.form-control:focus, .form-select:focus { border-color: var(--a-leaf); box-shadow: 0 0 0 .2rem rgba(76,175,125,.18); }
+.form-control-color { width: 100%; height: 44px; }
+
+/* ===== Trang đăng nhập ===== */
+.login-body { background: linear-gradient(160deg, #2D2A4A, #45407A); min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 1.5rem; margin: 0; font-family: var(--font-body); }
+.login-card { background: #fff; border-radius: 22px; padding: 2.4rem; width: 100%; max-width: 400px; box-shadow: 0 30px 60px -20px rgba(0,0,0,.4); }
+.login-brand { text-align: center; margin-bottom: 1.6rem; }
+.login-brand h1 { font-size: 1.3rem; margin: .8rem 0 .2rem; }
+.login-brand p { font-size: .86rem; color: var(--a-plum-soft); margin: 0; }
+.login-back { display: block; text-align: center; margin-top: 1.2rem; font-size: .85rem; color: var(--a-plum-soft); font-weight: 600; }
+.login-back:hover { color: var(--a-coral); }
+
+/* ===== Responsive ===== */
+@media (max-width: 991.98px) {
+  .admin-sidebar {
+    position: fixed; left: -280px; top: 0; z-index: 1050; transition: left .25s ease; box-shadow: 0 0 40px rgba(0,0,0,.3);
+  }
+  .admin-sidebar.show { left: 0; }
+  .admin-content { padding: 1.2rem; }
+}

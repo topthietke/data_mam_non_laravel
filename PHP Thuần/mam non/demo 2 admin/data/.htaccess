@@ -1,0 +1,2 @@
+# Không cho phép truy cập trực tiếp các file dữ liệu JSON qua trình duyệt.
+Require all denied
